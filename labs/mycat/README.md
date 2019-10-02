@@ -1,6 +1,7 @@
 Lab - mycat
 ===========
 
+Change
 Rewrite the `cat2.c` program by using `read`, `write`, `open` and `close` instead of their library equivalents.
 
 Then, generate a report with performance metrics between the existing `cat` command  and your `mycat`.

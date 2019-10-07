@@ -1,0 +1,20 @@
+time function results:
+Based on some results obtained by the program's running time.
+
+Cat
+Elapsead real average: -----------  0.6067
+	System average:    -----------  0.0433
+	User average: 	   -----------  0.3000
+	Percentage of CPU average: --- 11.3333
+	Context Switch average:    27,350.666666667
+
+MyCat
+Elapsead real average: ----------------  0.6200
+	System average:    ----------------  0.0633
+	User average: 	   ----------------  0.0533
+	Percentage of CPU average: -------- 18.6667
+	Context Switch average: ------- 40,961.66666667
+
+Based on results, it is easy to see that the cat function
+have a better running time performance on every metric, so 
+cat would be preffered for daily use.

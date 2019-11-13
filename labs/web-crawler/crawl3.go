@@ -18,6 +18,7 @@ import (
 	"os"
 
 	"gopl.io/ch5/links"
+	"flag"
 )
 
 //!+sema
@@ -46,13 +47,24 @@ func main() {
 
 	// Start with the command-line arguments.
 	n++
-	go func() { worklist <- os.Args[1:] }()
+	go func() { worklist <- os.Args[2:] }()
 
 	// Crawl the web concurrently.
 	seen := make(map[string]bool)
+	numLinks := 0
+	maxLinks := flag.Int("depth", 3, "Should write -depth=<depthLevel>")
+	flag.Parse()
+	if(*maxLinks < 0){
+		fmt.Println("There was an error.\nThe depth number should be positive")
+		os.Exit(1)
+	}
 	for ; n > 0; n-- {
 		list := <-worklist
 		for _, link := range list {
+			if numLinks > *maxLinks{
+				break
+			}
+			numLinks++
 			if !seen[link] {
 				seen[link] = true
 				n++
@@ -60,7 +72,9 @@ func main() {
 					worklist <- crawl(link)
 				}(link)
 			}
+			
 		}
+		
 	}
 }
 
